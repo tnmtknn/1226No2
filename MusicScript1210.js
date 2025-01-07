@@ -93,16 +93,11 @@ const result = document.getElementById("result");
 searchButton.addEventListener("click", () => {
     const inputValue = inputField.value;
 
-    for(let i=0; i<csvArray.length; i++){
-        // const match = csvArray.find(row => row.input === inputValue);
-        if(row.input === inputValue){
-            
-        }
-    }
-    
+    const matches = csvArray.filter(row => row.input === inputValue);
 
-    if (match) {
-        result.textContent = `Theory: ${match.next}`;
+    if (matches.length > 0) {
+        // 複数の結果を文字列に変換して表示
+        result.textContent = matches.map(match => `${match.next}`).join(", ");
     } else {
         result.textContent = "一致するデータが見つかりません。";
     }
